@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BoothackForum.Data;
+using BoothackForum.Models.ForumModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoothackForum.Service
@@ -14,6 +15,8 @@ namespace BoothackForum.Service
         {
             _context = context;
         }
+
+        
 
         Task IForum.Create(Forum forum)
         {

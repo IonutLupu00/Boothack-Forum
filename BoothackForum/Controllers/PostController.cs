@@ -90,7 +90,7 @@ namespace BoothackForum.Controllers
             var user =  _userManager.FindByIdAsync(userId).Result;
             Post post = BuildPost(model, user);
 
-            _postService.Add(post).Wait();
+            await _postService.Add(post);
 
             return RedirectToAction("Index", "Post", new { id = post.Postid});
         }

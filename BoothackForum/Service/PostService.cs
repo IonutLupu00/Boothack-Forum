@@ -43,12 +43,16 @@ namespace BoothackForum.Service
             throw new System.NotImplementedException();
         }
 
-        IEnumerable<Post> IPost.GetAll()
+       public IEnumerable<Post> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _context.Posts
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                    .ThenInclude(reply => reply.User)
+                .Include(post => post.Forum);
         }
 
-        Post IPost.GetById(int id)
+       public Post GetById(int id)
         {
             return _context.Posts.Where(post => post.Postid == id)
                 .Include(post => post.User)
@@ -61,6 +65,11 @@ namespace BoothackForum.Service
         IEnumerable<Post> IPost.GetFilteredPosts(string searchQuery)
         {
             throw new System.NotImplementedException();
+        }
+
+        IEnumerable<Post> IPost.GetLatestPosts(int number)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(number);
         }
     }
 }

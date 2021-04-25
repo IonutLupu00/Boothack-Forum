@@ -42,7 +42,7 @@ namespace BoothackForum.Controllers
             {
                 Id = post.Postid,
                 AuthorName = post.User.UserName ?? "Unknown Author",
-                AuthorId = post.User.Id ?? null,
+                AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
