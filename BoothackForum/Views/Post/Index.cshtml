@@ -1,0 +1,25 @@
+﻿@model BoothackForum.Models.PostModel.PostIndexModel
+
+<h1>@Model.Title</h1>
+
+ <div>
+     Author: @Model.AuthorName (@Model.AuthorRating)
+     Created: @Model.Created
+ </div>
+
+<div class="postContent">
+    @Model.PostContent
+</div>
+
+@foreach (var reply in Model.Replies){ 
+<div>
+    <div>
+        Author: @reply.AuthorName (@reply.AuthorRating)
+        Created: @reply.Created
+    </div>
+
+    <div class="replyContent">
+        @reply.ReplyContent
+    </div>
+</div>
+}
