@@ -10,21 +10,24 @@
     <title>@ViewData["Title"] - BoothackForum</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
-<body>
+<body id="mainBody">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
                 </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                <div class="navbar-collapse collapse ">
+                    @*<partial name="_LoginPartial" />*@
                     <ul class="nav navbar-nav flex-grow-1">
                         <li>
-                            <a asp-controller="Forum" asp-action="Index">Forums</a>
+                            <a class="nav-link text-dark" asp-controller="Forum" asp-action="Index">Forums</a>
                         </li>
-                        if(@SignInManager.IsSignedIn(User)){
+                        @if(SignInManager.IsSignedIn(User)){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 Settings
@@ -38,8 +41,8 @@
                                 {
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Admin</li>
-                                    <li><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
-                                    <li><a asp-controller="Profile" asp-action="Index">View Users</a></li>
+                                    <li><a class="nav-link text-dark" asp-controller="Forum" asp-action="Create">Create Forum</a></li>
+                                    <li><a class="nav-link text-dark" asp-controller="Profile" asp-action="Index">View Users</a></li>
                                 }
                             </ul>
 
@@ -50,39 +53,33 @@
                     @if (!SignInManager.IsSignedIn(User))
                     {
                         <ul class="nav nav-bar navbar-right">
-                            <li>
-                                <a asp-controller="Account" asp-action="Login">Sign In</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"  asp-controller="Account" asp-action="Login">Sign In</a>
                             </li>
-                            <li class="active">
-                                <a asp-controller="Account" asp-action="Register">Register</a>
+                            <li class="active nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
                         </ul>
                     }
                     else
                     {
-                <form asp-controller="Accout" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
-                    <ul class="nav nav-bar navbar-right">
-                        <li>Hello @UserManager.GetUserName(User)</li>
-                        <li><a asp-controller="Account" asp-action="Logout">Sign Out</a></li>                        
-                    </ul>
-                </form>
+                    <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                        <ul class="nav nav-bar navbar-right">
+                            <li>Hello @UserManager.GetUserName(User)</li>
+                            <li class="nav-item"><a asp-controller="Account" asp-action="Logout">Sign Out</a></li>                        
+                        </ul>
+                    </form>
                         
                     }
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" id="test">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - BoothackForum - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -11,7 +11,234 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
+.navbar{
+    box-shadow: 0px 6px -5px -6px #808080;
+}
 
+.navLogo{
+    background-image:url("/images/app-logo-s.png");
+    background-repeat:no-repeat;
+    background-size:100%;
+    width:50px;
+    background-position:center;
+    height:38px;
+}
+
+.sectionHeader{
+    background-color:rgba(0,0,0,0.9);
+    padding: 8px 0 24px 25px;
+}
+
+.sectionHeading{
+    color:white;
+    font-size:1.3em;
+    font-family:'Roboto';
+    padding: 16px 0 16px 0;
+    border-bottom:1px solid #0366d6;
+    margin-bottom:12px;
+}
+
+.postHeading{
+    color: white;
+    font-size:1.1em;
+    font-family:'Roboto';
+    padding:16px 0 16px 0;
+}
+
+.secionInfo{
+    height: 400px;
+    background-color:white;
+
+}
+
+.frontPageSplash {
+    background-image: url(../images/theme/front-splash.png);
+    background-repeat: no-repeat;
+    background-position: right;
+
+}
+.frontPageLearn{
+    font-family:'Roboto';
+    padding: 12px 0 0 32px;
+    height:400px;
+}
+
+.sectionDescription{
+    color:#EEE;
+}
+
+.frontPageHeading {
+    font-size: 3.2em;
+    margin: 16px 0;
+    color: #C18C5D;
+}
+
+.frontPageSubHeading {
+    font-size: 1.3em;
+    color: #E3D26F;
+}
+.frontPageTopContainer{
+    padding:40px 80px 42px 40px;
+    border:1px solid #999;
+    background-color:#2569D5;
+    font-family:'Roboto';
+}
+
+.homeSearch{
+    width:100%;
+    margin-top:8px;
+    background-color:rgba(0,0,0,0.1);
+    padding:8px;
+    border:0px;
+    height:1.7em;
+    font-size:2.1em;
+    font-family: 'Roboto Mono';
+    font-weight:bold;
+    transition:ease-in 0.2s;
+}
+
+.homeSearch:focus{
+    border:none !important;
+    outline: none !important;
+    transition: ease-in 0.2s;
+    color: #03A9F4;
+    background-color: rgba(0,0,0,0.7);
+    box-shadow: 0 5px 4px -6px #000;
+}
+
+.frontPageContent{
+    background-color:rgba(255,255,255, 0.9);
+    padding:15px;
+}
+
+#latestPosts{
+    font-size:1em;
+    font-weight:bold;
+    color:#333;
+    margin:4px 0 16px 0;
+}
+
+
+/*Post*/
+.postTitle{
+    font-family:'Roboto';
+    font-weight:bold;
+}
+
+.postSubtitle{
+    color: #879;
+    font-family:'Roboto Mono';
+    font-size:0.7em;
+}
+
+.postData{
+    display:inline-block;
+}
+
+.postDate{
+    color: #879;
+    font-family: 'Roboto Mono';
+    font-size:0.7em;
+}
+
+.postLogo{
+    display:inline-block;
+    border-radius:3px;
+    margin-right:20px;
+    height:40px;
+    width40px;
+    background-color:#ddd;
+}
+
+
+/*Forum Index*/
+
+#forumIndexTable td{
+    background-color:rgba(255,255,255,0.9);
+}
+
+#forumIndexTable tr:hover{
+    background-color:rgba(0,116,238,1);
+}
+
+.forumData{
+    display:inline-block;
+}
+
+.forumTitle{
+    font-family:Rockwell;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.forumSubTitle{
+    color:#879;
+    font-family:'Roboto Mono';
+    font-size:0.8em;
+}
+
+.forumDescription{
+    color:#555;
+    font-family:'Roboto';
+}
+
+.forumLogo{
+    border-radius:3px;
+    float:left;
+    margin-right:20px;
+    height:40px;
+    width:40px;
+    background-color:#ddd;
+    border:1px solid #555;
+    background-repeat:no-repeat;
+    background-size:100%;
+}
+
+.forumPostCount{
+    color:#879;
+    font-family:'Roboto mono';
+    font-size:0.9em;
+}
+
+.forumMemberCount {
+    color: #879;
+    font-family: 'Roboto mono';
+    font-size: 0.9em;
+}
+
+#forumIndexContent{
+    padding-bottom: 60px;
+    background-color:white;
+}
+
+
+.noPosts{
+    text-align:center;
+    padding-top:30px;
+    font-family: 'Roboto Mono';
+}
+
+/*Post*/
+
+.createPostSection{
+    background-color:#fff;
+    padding:24px;
+}
+
+.body-content{
+    padding-left:15px;
+    padding-right:15px;
+}
+
+body {
+    padding: 0px 0 20px 0;
+    background-color: lightgray;
+    background-image: url("../images/theme/bg-01.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -58,10 +285,7 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+
 .footer {
   position: absolute;
   bottom: 0;
