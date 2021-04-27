@@ -42,7 +42,10 @@ namespace BoothackForum.Controllers
                     AuthorRating = post.User.Rating,
                     Created = post.Created,
                     PostContent = post.Content,
-                    Replies = replies
+                    Replies = replies,
+                    ForumName = post.Forum.Title,
+                    ForumId = post.Forum.ForumId,
+                    IsAdmin = false
                 };
             }
             else
@@ -57,13 +60,18 @@ namespace BoothackForum.Controllers
                     AuthorRating = 0,
                     Created = post.Created,
                     PostContent = post.Content,
-                    Replies = replies
+                    Replies = replies,
+                    ForumName = post.Forum.Title,
+                    ForumId = post.Forum.ForumId,
+                    IsAdmin = IsAuthorAdmin(post.User)
                 };
             }
 
 
             return View(model);
         }
+
+       
 
         [Authorize]
         public IActionResult Create(int id)
@@ -95,6 +103,21 @@ namespace BoothackForum.Controllers
             return RedirectToAction("Index", "Post", new { id = post.Postid});
         }
 
+        
+
+        private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
+        {
+            return replies.Select(reply => new PostReplyModel { 
+                Id = reply.PostReplyId,
+                AuthorName = reply.User.UserName,
+                AuthorId = reply.User.Id,
+                AuthorImageURL = reply.User.Photo,
+                AuthorRating = reply.User.Rating,
+                Created = reply.Created,
+                ReplyContent = reply.Content,
+                IsAdmin = IsAuthorAdmin(reply.User)
+            });
+        }
         private Post BuildPost(NewPostModel model, ApplicationUser user)
         {
             var forum = _forumService.GetById(model.ForumId);
@@ -109,18 +132,9 @@ namespace BoothackForum.Controllers
 
             };
         }
-
-        private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
+        private bool IsAuthorAdmin(ApplicationUser user)
         {
-            return replies.Select(reply => new PostReplyModel { 
-                Id = reply.PostReplyId,
-                AuthorName = reply.User.UserName,
-                AuthorId = reply.User.Id,
-                AuthorImageURL = reply.User.Photo,
-                AuthorRating = reply.User.Rating,
-                Created = reply.Created,
-                ReplyContent = reply.Content
-            });
+            return _userManager.GetRolesAsync(user).Result.Contains("Admin");
         }
     }
 }

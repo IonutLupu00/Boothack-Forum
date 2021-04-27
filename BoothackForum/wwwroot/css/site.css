@@ -31,6 +31,7 @@ a {
 
 .sectionHeading{
     color:white;
+    width:100%;
     font-size:1.3em;
     font-family:'Roboto';
     padding: 16px 0 16px 0;
@@ -42,6 +43,7 @@ a {
     color: white;
     font-size:1.1em;
     font-family:'Roboto';
+    width:100%;
     padding:16px 0 16px 0;
 }
 
@@ -65,6 +67,7 @@ a {
 
 .sectionDescription{
     color:#EEE;
+    width:70%;
 }
 
 .frontPageHeading {
@@ -119,7 +122,7 @@ a {
 }
 
 
-/*Post*/
+/*Post-------------------------------------------------- */
 .postTitle{
     font-family:'Roboto';
     font-weight:bold;
@@ -130,7 +133,7 @@ a {
     font-family:'Roboto Mono';
     font-size:0.7em;
 }
-
+ 
 .postData{
     display:inline-block;
 }
@@ -150,8 +153,84 @@ a {
     background-color:#ddd;
 }
 
+.postHeader{
+    background-color:#212121;
+    padding: 8px 0px 24px 24px;
+}
 
-/*Forum Index*/
+/*Button stylings-------------------------------------------------- */
+
+#headingBtn{
+    float:right;
+    margin-right:20px;
+}
+
+.btn-back{
+    background-color: #555;
+    color:#fff !important;
+    transition:ease-in 0.1s;
+    border-radius:0px !important;
+}
+
+.btn-back:hover{
+    transition: ease-in 0.1s;
+    background-color:#1EBBE5 !important;
+}
+
+.btn-newReply{
+    background-color: #5C6BC0 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-newReply:hover{
+    background-color:#9FABDA !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-file{
+    color:white;
+    width:100%;
+    background-color:#4FC3F7;
+    transition: ease 0.3s;
+}
+
+
+.btn-file:hover {
+    
+    background-color: #039BE5;
+    transition: ease 0.3s;
+}
+
+.btn-newPost {
+    background-color: #C62828 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-newPost:hover {
+    background-color: #E53935 !important;
+    color:#fff !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-submitPost {
+    background-color: #00695C !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-submitPost:hover {
+    background-color: #00897B !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+}
+
+
+/*Forum Index-------------------------------------------------- */
 
 #forumIndexTable td{
     background-color:rgba(255,255,255,0.9);
@@ -194,6 +273,42 @@ a {
     background-size:100%;
 }
 
+.postAuthorImage{
+    height:110px;
+    width:80px;
+    background-size:100%;
+}
+
+.postAuthorContainer{
+    padding:12px;
+    width:190px;
+    color:#444;
+}
+
+.postIndexTitle{
+    font-size:1.4em;
+
+}
+
+.postContentContainer{
+    color:#222;
+    padding:22px;
+    border-left:1px solid #ddd;
+}
+
+.postAuthorRating{
+    font-size:0.9em;
+    color:#159;
+    font-family:'Roboto Mono';
+}
+
+#postIndexContent {
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.2), 0 6px 6px rgba(0,0,0, 0.3);
+}
+
+/*Forum*/
+
 .forumPostCount{
     color:#879;
     font-family:'Roboto mono';
@@ -218,7 +333,7 @@ a {
     font-family: 'Roboto Mono';
 }
 
-/*Post*/
+/*Post-------------------------------------------------- */
 
 .createPostSection{
     background-color:#fff;
@@ -238,6 +353,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    font-family:'Roboto';
+    
 }
 .btn-primary {
   color: #fff;
@@ -251,8 +368,7 @@ body {
   border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
+/* Sticky footer styles-------------------------------------------------- */
 html {
   font-size: 14px;
 }

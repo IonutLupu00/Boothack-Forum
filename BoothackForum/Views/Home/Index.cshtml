@@ -21,8 +21,11 @@
                 @foreach(var post in Model.LatestPosts)
                     {
                         <tr>
-                            <td>
-                                <div class="forumLogo" style="background-image: url(@post.Forum.ImageURL)"> </div>
+                            <td>                                
+                                <a class="forumLogo" style="background-image: url(@post.Forum.ImageURL)" asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">
+
+                                </a>
+                                
                                 <div class="postTitle">
                                     <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
                                         @post.Title
