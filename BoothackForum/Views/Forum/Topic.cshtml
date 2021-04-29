@@ -10,13 +10,13 @@
             @if (Context.User.Identity.IsAuthenticated)
             {
                 <span id="headingBtn">
-                    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-newPost"></a>
+                    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-newPost">Create New Post</a>
                 </span>
             }
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm">
-                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
-                    <button type="submit" class="btn buttonSearch">
+                    <input  asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
+                    <button type="submit" class="btn btn-search">
                         <i class="meterial-icons">Search</i>
                     </button>
                 </div>
@@ -41,11 +41,11 @@
     </div>
     
     <div class="row forumIndexContent">
-        @if(Model.Posts.Any())
+        @if (Model.Posts.Any())
         {
             <table class="table table-hover table-bordered" id="forumIndexTable">
                 <tbody>
-                    @foreach(var post in Model.Posts)
+                    @foreach (var post in Model.Posts)
                     {
                         <tr>
                             <td>
@@ -70,7 +70,7 @@
                             </td>
 
                             <td>
-                                <div class="forimPostCount">
+                                <div class="forumPostCount">
                                     Replies: @post.RepliesCount
                                 </div>
                             </td>
@@ -85,17 +85,25 @@
                 </tbody>
             </table>
         }
-        else 
+        else if (string.IsNullOrEmpty(Model.SearchQuery))
         {
             <div class="noPosts">
                 <i class="meterial-icons" md-72>question_answer</i>
                 <h3>
-                    There are no posts available or to be found. <br/>
-                    Why not 
+                    There are no posts available or to be found. <br />
+                    Why not
                     <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
                         post
                     </a>
-                     something?
+                    something?
+                </h3>
+            </div>
+        }
+        else
+        {
+            <div class="noPosts">
+                <h3>
+                    No results found.
                 </h3>
             </div>
         }

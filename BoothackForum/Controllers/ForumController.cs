@@ -12,15 +12,16 @@ namespace BoothackForum.Controllers
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
-
-        public ForumController(IForum forumService)
+        private readonly IPost _postService;
+        public ForumController(IForum forumService, IPost postService)
         {
+            _postService = postService;
             _forumService = forumService;
         }
         public IActionResult Index()
         {
             IEnumerable<ForumListingModel> forums = _forumService.GetAll()
-                .Select(forum => new ForumListingModel
+                .Select(forum => new ForumListingModel 
             {
                 Id = forum.ForumId,
                 Name = forum.Title,
@@ -32,11 +33,13 @@ namespace BoothackForum.Controllers
             return View(model);
         }
 
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, string searchQuery)
         {
             Forum forum = _forumService.GetById(id);
-            
-            var posts = forum.Posts;
+            var posts = new List<Post>();
+           
+            posts = _postService.GetFilteredPosts(forum, searchQuery).ToList();
+                       
 
             var postListings = posts.Select(post => new PostListingModel
             {
@@ -55,10 +58,17 @@ namespace BoothackForum.Controllers
             var model = new ForumTopicModel
             {
                 Posts = postListings,
-                Forum = BuildForumListing(forum)
+                Forum = BuildForumListing(forum),
+                SearchQuery = searchQuery
             };
              
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Search(int id, string searchQuery)
+        {
+            return RedirectToAction("Topic", new { id, searchQuery });
         }
 
         private ForumListingModel BuildForumListing(Post post)

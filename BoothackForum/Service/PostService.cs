@@ -62,9 +62,15 @@ namespace BoothackForum.Service
                 .First();
         }
 
-        IEnumerable<Post> IPost.GetFilteredPosts(string searchQuery)
+        IEnumerable<Post> IPost.GetFilteredPosts(Forum forum, string searchQuery)
         {
-            throw new System.NotImplementedException();
+            var searchString = searchQuery ?? "";
+            searchString = searchString.ToLower();
+
+            return string.IsNullOrEmpty(searchString) ? forum.Posts :
+            forum.Posts
+            .Where(post => post.Title.ToLower().Contains(searchString)
+            || post.Content.ToLower().Contains(searchString) || post.User.UserName.ToLower().Contains(searchString));                               
         }
 
         IEnumerable<Post> IPost.GetLatestPosts(int number)

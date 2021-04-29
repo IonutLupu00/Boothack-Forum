@@ -24,8 +24,8 @@ a {
     height:38px;
 }
 
-.sectionHeader{
-    background-color:rgba(0,0,0,0.9);
+.sectionHeader {
+    background-color: #052F64;
     padding: 8px 0 24px 25px;
 }
 
@@ -204,36 +204,62 @@ a {
 }
 
 .btn-newPost {
-    background-color: #C62828 !important;
+    background-color: #DB6C24 !important;
     color: #fff !important;
     transition: ease-in 0.1s;
     border-radius: 0px !important;
+    
 }
 
-.btn-newPost:hover {
-    background-color: #E53935 !important;
-    color:#fff !important;
-    transition: ease-in 0.1s;
-}
+    .btn-newPost:hover {
+        background-color: #BD6E42 !important;
+        color: #fff !important;
+        transition: ease-in 0.1s;
+    }
 
 .btn-submitPost {
-    background-color: #00695C !important;
+    background-color: #DB6C24 !important;
     color: #fff !important;
     transition: ease-in 0.1s;
     border-radius: 0px !important;
 }
 
-.btn-submitPost:hover {
-    background-color: #00897B !important;
+    .btn-submitPost:hover {
+        background-color: #BD6E42 !important;
+        color: #fff !important;
+        transition: ease-in 0.1s;
+    }
+
+.btn-search {
+    background-color: #7700BC !important;
+    margin-bottom:5px;
     color: #fff !important;
     transition: ease-in 0.1s;
+    border-radius: 0px !important;
 }
 
+    .btn-search:hover {
+        background-color: #64009E !important;
+        color: #fff !important;
+        transition: ease-in 0.1s;
+    }
+
+.searchBar{
+    background-color:#333;
+    width:25%;
+    transition: ease .3s;
+    border:none;
+}
+
+    .searchBar:focus {
+        color: black;
+        background-color: #fff;
+
+    }
 
 /*Forum Index-------------------------------------------------- */
-
-#forumIndexTable td{
-    background-color:rgba(255,255,255,0.9);
+#forumIndexTable td {
+    background-color: rgba(255,255,255,0.9);
 }
 
 #forumIndexTable tr:hover{
