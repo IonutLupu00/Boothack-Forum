@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using BoothackForum.Models.ForumModel;
 
 namespace BoothackForum.Models.PostModel
@@ -12,6 +13,8 @@ namespace BoothackForum.Models.PostModel
         public string AuthorId { get; set; }
         public string DatePosted { get; set; }
 
+       
+        public bool Hidden { get; set; }
         public ForumListingModel Forum { get; set; }
         public int RepliesCount { get; set;  }
     }

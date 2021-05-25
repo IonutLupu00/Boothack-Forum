@@ -45,7 +45,9 @@ namespace BoothackForum.Controllers
                     Replies = replies,
                     ForumName = post.Forum.Title,
                     ForumId = post.Forum.ForumId,
-                    IsAdmin = false
+                    IsAdmin = false,
+                    IsAdminViewer = User.IsInRole("Admin"),
+                    RepliesCount = _postService.GetNumberOfAvailableReplies(id)
                 };
             }
             else
@@ -63,7 +65,9 @@ namespace BoothackForum.Controllers
                     Replies = replies,
                     ForumName = post.Forum.Title,
                     ForumId = post.Forum.ForumId,
-                    IsAdmin = IsAuthorAdmin(post.User)
+                    IsAdmin = IsAuthorAdmin(post.User),
+                    IsAdminViewer = User.IsInRole("Admin"),
+                    RepliesCount = _postService.GetNumberOfAvailableReplies(id)
                 };
             }
 
@@ -97,13 +101,26 @@ namespace BoothackForum.Controllers
             var userId = _userManager.GetUserId(User);
             var user =  _userManager.FindByIdAsync(userId).Result;
             Post post = BuildPost(model, user);
+            if (!string.IsNullOrEmpty(model.Content))
+            {
+                await _postService.Add(post);
+                return RedirectToAction("Index", "Post", new { id = post.Postid });
+            }
+            else
+                return RedirectToAction("Topic", "Forum", new {id = model.ForumId , searchQuery = ""});
+                
 
-            await _postService.Add(post);
-
-            return RedirectToAction("Index", "Post", new { id = post.Postid});
+            
         }
 
         
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var post = _postService.GetById(id);
+            await _postService.Delete(id);
+
+            return RedirectToAction("Topic", "Forum", new { id = _forumService.GetForumByPost(post).ForumId});
+        }
 
         private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
         {
@@ -114,7 +131,7 @@ namespace BoothackForum.Controllers
                 AuthorImageURL = reply.User.Photo,
                 AuthorRating = reply.User.Rating,
                 Created = reply.Created,
-                ReplyContent = reply.Content,
+                Content = reply.Content,
                 IsAdmin = IsAuthorAdmin(reply.User)
             });
         }
@@ -128,7 +145,8 @@ namespace BoothackForum.Controllers
                 Content = model.Content,
                 Created = DateTime.Now,
                 User = user,
-                Forum = forum
+                Forum = forum,
+                Hidden = false
 
             };
         }

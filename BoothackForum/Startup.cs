@@ -7,7 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace BoothackForum
 {
@@ -35,10 +37,17 @@ namespace BoothackForum
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/Login");
 
+
+            services.AddSingleton<IFileProvider>(new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+                    services.AddMvc();
+
             services.TryAddScoped<SignInManager<ApplicationUser>>();
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
-
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
+            services.AddScoped<IUpload, UploadService>();
+            services.AddTransient<DataSeeder>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
@@ -46,7 +55,7 @@ namespace BoothackForum
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataSeeder dataSeeder)
         {
             if (env.IsDevelopment())
             {
@@ -59,6 +68,9 @@ namespace BoothackForum
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            dataSeeder.SeedSuperUser().Wait();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

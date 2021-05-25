@@ -19,6 +19,7 @@
         <table class="table table-hover" id="latestPostsTable">
             <tbody>
                 @foreach(var post in Model.LatestPosts)
+                    if(!post.Hidden)
                     {
                         <tr>
                             <td>                                
@@ -38,7 +39,7 @@
                                     }
                                     else if (post.RepliesCount == 0)
                                     {
-                                        <span>No  replies</span>
+                                        <span>No replies</span>
                                     }
                                     else
                                     {

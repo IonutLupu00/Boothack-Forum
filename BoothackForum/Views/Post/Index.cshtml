@@ -23,21 +23,77 @@
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
             </a>
-            <span class="postData"></span>
+
             @if (Model.IsAdmin)
             {
                 <span class="isAdmin smaller">Admin</span>
+                <br />
+            }
+            @if(Model.IsAdminViewer || User.Identity.Name == Model.AuthorName)
+            {
+                <a class="btn delete-button" asp-controller="Post" asp-action="DeletePost" asp-route-id="@Model.Id">
+                    Delete Post
+                </a>
             }
         </div>
         <div class="cold-md-9 postContentContainer">
-            <div class="postContent">
-                @Html.Raw(Model.PostContent)
-            </div>
+            @if (!Model.Hidden)
+            {
+                <div class="postContent">
+                    @Html.Raw(Model.PostContent)
+                </div>
+            }
+            else
+            {
+                <div class="postContent">
+                    Post not available!
+                </div>
+            }
+
         </div>
     </div>
 
     <div class="row" id="replyDivider"></div>
 
+
+
+    @if (Model.RepliesCount > 0)
+    {
+        foreach (var reply in Model.Replies)
+            if(!reply.Hidden)
+                {
+                    <div class="row replyContent">
+                        <div class="col-md-3 replyAuthorContainer">
+                            <div class="postAuthorImage" style="background-image:url(@reply.AuthorImageURL)">
+
+                            </div>
+
+                            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
+                                @reply.AuthorName
+                            </a>
+                            @if (reply.IsAdmin)
+                            {
+                                <div class="isAdmin smaller">Admin</div>
+                                <br />
+                            }
+                            <span>@reply.Created</span>
+                        </div>
+                        <div class="col-md-9 postContentContainer">
+                            <div class="postContent">
+                                @Html.Raw(reply.Content)
+                            </div>
+                        </div>
+                    </div>
+                }
+    }
+    else
+    {
+        <div class="noPosts">
+            <h3>
+                There are no replies to this post. <br />
+            </h3>
+        </div>
+    }
     @if (User.Identity.IsAuthenticated)
     {
         <div class="row">
@@ -46,43 +102,6 @@
                     Post Reply
                 </a>
             </span>
-        </div>
-    }
-
-    @if (Model.Replies.Any())
-    {
-        foreach (var reply in Model.Replies)
-        {
-            <div class="row replyContent">
-                <div class="col-md-3 replyAuthorContainer">
-                    <div class="postAuthorImage" style="background-image:url(@reply.AuthorImageURL)">
-
-                    </div>
-
-                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
-                        @reply.AuthorName
-                    </a>
-                    @if (reply.IsAdmin)
-                    {
-                        <div class="isAdmin smaller">Admin</div>
-                        <br />
-                    }
-                    <span>@reply.Created</span>
-                </div>
-                <div class="col-md-9 replyContent">
-                    <div class="postContent">
-                        @Html.Raw(reply.ReplyContent)
-                    </div>
-                </div>
-            </div>
-        }
-    }
-    else
-    {
-        <div class="noPosts">
-            <h3>
-                There are no replies to this post. <br />
-            </h3>
         </div>
     }
 

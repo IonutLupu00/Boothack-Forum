@@ -18,9 +18,10 @@ namespace BoothackForum.Service
 
         
 
-        Task IForum.Create(Forum forum)
+        async Task IForum.Add(Forum forum)
         {
-            throw new NotImplementedException();
+            _context.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
         Task IForum.Delete(int forumId)
@@ -36,6 +37,19 @@ namespace BoothackForum.Service
         IEnumerable<ApplicationUser> IForum.GetAllActiveUsers()
         {
             throw new NotImplementedException();
+        }
+
+        
+        Forum IForum.GetForumByPost(Post post)
+        {
+            var forum = _context.Forums.Where(f => f.Posts.Contains(post))
+                .Include(f => f.Posts)
+                    .ThenInclude(p => p.User)
+                .Include(f => f.Posts)
+                    .ThenInclude(p => p.Replies)
+                        .ThenInclude(r => r.User)
+                .FirstOrDefault();
+            return forum;
         }
 
         Forum IForum.GetById(int id)
@@ -59,5 +73,7 @@ namespace BoothackForum.Service
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

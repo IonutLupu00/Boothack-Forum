@@ -59,6 +59,9 @@ namespace BoothackForum.Migrations
                     b.Property<int?>("ForumId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -86,6 +89,9 @@ namespace BoothackForum.Migrations
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("Postid")
                         .HasColumnType("int");

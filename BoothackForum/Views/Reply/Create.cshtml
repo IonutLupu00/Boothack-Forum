@@ -1,0 +1,17 @@
+﻿
+@model BoothackForum.Models.ReplyModel.PostReplyModel
+
+<h1>Reply to @Model.PostTitle</h1>
+
+<form asp-action="AddReply" method="post" id="addPostForm">
+    
+
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+    <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
+        Submit Reply
+    </button>
+    <input asp-for="PostId" type="hidden" />
+</form>

@@ -10,7 +10,6 @@ namespace BoothackForum.Data
         public int ForumId { get; set; }
         public DateTime? Created { get; set; }
         
-
         public string Title { get; set; }
         public string Description { get; set; }
         

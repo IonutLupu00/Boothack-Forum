@@ -1,6 +1,7 @@
 ﻿using BoothackForum.Models.ReplyModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BoothackForum.Models.PostModel
 {
@@ -16,7 +17,9 @@ namespace BoothackForum.Models.PostModel
         public string PostContent { get; set; }
         public IEnumerable<PostReplyModel> Replies { get; set; }
         public bool IsAdmin { get; set; }
-
+        public bool IsAdminViewer { get; set; }
+        public int RepliesCount { get; set; }
+        public bool Hidden { get; set; }
         public int ForumId { get; set; }
         public string ForumName { get; set; }
     }

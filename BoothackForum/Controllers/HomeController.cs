@@ -41,7 +41,8 @@ namespace BoothackForum.Controllers
                 AuthorRating = post.User.Rating,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
-                Forum = GetForumFromPost(post)
+                Forum = GetForumFromPost(post),
+                Hidden = post.Hidden
             }) ;
 
             return new HomeIndexModel

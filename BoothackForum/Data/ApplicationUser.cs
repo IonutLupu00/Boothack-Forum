@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,6 @@ namespace BoothackForum.Data
 
         public virtual ICollection<Post> UserPosts { get; set; }
         public DateTime Created { get; set; }
-
+        
     }
 }

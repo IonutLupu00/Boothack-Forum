@@ -10,7 +10,7 @@ namespace BoothackForum.Data
         public int PostReplyId { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
-
+        public bool Hidden { get; set; }
         public virtual ApplicationUser User { get; set; }
         public virtual Post Post { get; set; }
     }

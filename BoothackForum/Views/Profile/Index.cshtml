@@ -1,0 +1,26 @@
+﻿@model BoothackForum.Models.ApplicationUserModel.ProfileListingModel
+
+<table class="table table-hover" >
+    <tbody>
+        @foreach (var profile in Model.Profiles)
+        {
+            <tr>
+                <td>
+                    <div class="profileListingImage" style="background-image:url(@profile.ProfileImageURL)">
+                        
+                    </div>
+                </td>
+                <td>
+                    Rating: @profile.UserRating
+                </td>
+                <td>
+                    Email: @profile.Email
+                </td>
+                <td>
+                    Member Since: @profile.MemberSince
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

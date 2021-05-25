@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using BoothackForum.Models.PostModel;
 using System;
-
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BoothackForum.Controllers
 {
@@ -25,7 +26,8 @@ namespace BoothackForum.Controllers
             {
                 Id = forum.ForumId,
                 Name = forum.Title,
-                Description = forum.Description
+                Description = forum.Description,
+                ImageURL = forum.ImageURL
             });
             var model = new ForumIndexModel {
                 ForumList = forums
@@ -49,8 +51,10 @@ namespace BoothackForum.Controllers
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
-                RepliesCount = post.Replies.Count(),
-                Forum = BuildForumListing(post)
+                RepliesCount = _postService.GetNumberOfAvailableReplies(post.Postid),
+                Forum = BuildForumListing(post),
+                Hidden = post.Hidden
+                
             });
 
 
@@ -59,7 +63,8 @@ namespace BoothackForum.Controllers
             {
                 Posts = postListings,
                 Forum = BuildForumListing(forum),
-                SearchQuery = searchQuery
+                SearchQuery = searchQuery,
+                PostsCount = _postService.GetNumberOfAvailablePosts(id)
             };
              
             return View(model);
@@ -69,6 +74,26 @@ namespace BoothackForum.Controllers
         public IActionResult Search(int id, string searchQuery)
         {
             return RedirectToAction("Topic", new { id, searchQuery });
+        }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
+            var model = new NewForumModel { };
+            return View(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> AddForum(NewForumModel newForum)
+        {
+            var forum = new Forum
+            {
+                Title = newForum.Name,
+                Description = newForum.Description,
+                Created = newForum.Created
+            };
+
+            await _forumService.Add(forum);
+            return RedirectToAction("Index", "Forum");
         }
 
         private ForumListingModel BuildForumListing(Post post)
@@ -86,7 +111,8 @@ namespace BoothackForum.Controllers
                 Id = forum.ForumId,
                 Name = forum.Title,
                 Description = forum.Description,
-                ImageURL = forum.ImageURL
+                ImageURL = forum.ImageURL,
+                PostsCount = forum.Posts.Count()
             };
         }
     }

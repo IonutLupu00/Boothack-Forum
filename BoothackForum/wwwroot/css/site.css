@@ -7,9 +7,12 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+  text-decoration:none;
 }
 .navbar{
     box-shadow: 0px 6px -5px -6px #808080;
@@ -25,8 +28,8 @@ a {
 }
 
 .sectionHeader {
-    background-color: #052F64;
-    padding: 8px 0 24px 25px;
+    background-color: #212121;
+    padding: 8px 24px 24px 25px;
 }
 
 .sectionHeading{
@@ -34,7 +37,7 @@ a {
     width:100%;
     font-size:1.3em;
     font-family:'Roboto';
-    padding: 16px 0 16px 0;
+    padding: 16px 0px 16px 0;
     border-bottom:1px solid #0366d6;
     margin-bottom:12px;
 }
@@ -58,11 +61,14 @@ a {
     background-repeat: no-repeat;
     background-position: right;
 
+
 }
+
 .frontPageLearn{
     font-family:'Roboto';
     padding: 12px 0 0 32px;
     height:400px;
+    
 }
 
 .sectionDescription{
@@ -149,7 +155,7 @@ a {
     border-radius:3px;
     margin-right:20px;
     height:40px;
-    width40px;
+    width:40px;
     background-color:#ddd;
 }
 
@@ -244,6 +250,22 @@ a {
         transition: ease-in 0.1s;
     }
 
+.delete-button {
+    background-color: #752626 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+    .delete-button:hover {
+        background-color: #e16060 !important;
+        color: #fff !important;
+        transition: ease-in 0.1s;
+        border-radius: 0px !important;
+    }
+
+
+
 .searchBar{
     background-color:#333;
     width:25%;
@@ -260,6 +282,15 @@ a {
 /*Forum Index-------------------------------------------------- */
 #forumIndexTable td {
     background-color: rgba(255,255,255,0.9);
+    min-width:200px;
+    border-right: 1px solid #555;
+}
+#forumIndexTable td a{
+    text-decoration:none;
+    font-family:'Roboto';
+    font-size:1.4em;
+    color:black;
+    
 }
 
 #forumIndexTable tr:hover{
@@ -299,6 +330,12 @@ a {
     background-size:100%;
 }
 
+
+
+
+
+
+/*Post*/
 .postAuthorImage{
     height:110px;
     width:80px;
@@ -332,6 +369,21 @@ a {
     background-color: white;
     box-shadow: 0 10px 20px rgba(0,0,0, 0.2), 0 6px 6px rgba(0,0,0, 0.3);
 }
+
+/*Replies*/
+
+.replyContent {
+    background-color: white;
+    margin-top:10px;    
+    margin-bottom:10px;    
+}
+
+.replyAuthorContainer {
+    padding: 12px;
+    width: 190px;
+    color: #444;
+}
+
 
 /*Forum*/
 
@@ -375,12 +427,11 @@ body {
     padding: 0px 0 20px 0;
     background-color: lightgray;
     background-image: url("../images/theme/bg-01.png");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-family:'Roboto';
-    
+    font-family: 'Roboto';
 }
 .btn-primary {
   color: #fff;
@@ -394,11 +445,18 @@ body {
   border-color: #1861ac;
 }
 
+
+
+
+.replyContent{
+
+}
+
 /* Sticky footer styles-------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   html {
     font-size: 16px;
   }
@@ -418,13 +476,62 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
+
+}
+
+
+/*User Profiles*/
+
+.userProfile{
+    padding:32px 0 64px 24px;
+    background-color:#fff;
+}
+
+#userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating, #userActiveLabel{
+    display:block;
+    color:#444;
+    font-family:'Roboto';
+    padding-top:3px;
+}
+
+#userName{
+    display:block;
+    color:indianred;
+    font-family:'Roboto';
+    font-size:1.5em;
+}
+.userProfileImage{
+    height:400px;
+    width:100%;
+    background-size:contain;
+    background-repeat:no-repeat;
+
+}
+
+.profileDescription span{
+    font-family:'Roboto';
+    font-size: 1.4em;
+    color:black;
+    margin-bottom:30px;
+}
+
+.profileListingImage {
+    
+    height: 200px;
+    width: 100px;
+    background-repeat:no-repeat;
+    background-size:100%;
+    display:block;
+    position:relative;
+    background-position:center;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    scroll-behavior: smooth;
 }
 
 
@@ -434,4 +541,9 @@ html {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.stretch{
+    width:100%;
+    height:100%;
 }

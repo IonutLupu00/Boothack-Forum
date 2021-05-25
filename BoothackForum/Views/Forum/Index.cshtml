@@ -10,11 +10,15 @@
                 <td>
                     <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
                         @forum.Name
-                    </a>               
+                    </a>  
+                    <a class="forumLogo" style="background-image: url(@forum.ImageURL)" asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+
+                    </a>
                 </td>
                 <td>
                     @forum.Description
                 </td>
+                
             </tr>
         }
     </tbody>
