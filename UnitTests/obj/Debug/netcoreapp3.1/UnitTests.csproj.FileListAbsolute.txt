@@ -5,7 +5,6 @@ E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcore
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\BoothackForum.runtimeconfig.dev.json
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\appsettings.json
-E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\BoothackForum.StaticWebAssets.xml
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\BoothackForum.exe
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
@@ -38,7 +37,6 @@ E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcore
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll
@@ -248,3 +246,6 @@ E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\obj\Debug\netcore
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.dll
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.pdb
 E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.genruntimeconfig.cache
+E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\Moq.dll
+E:\facultate\BoothackForum\mainProject\BoothackForum\UnitTests\bin\Debug\netcoreapp3.1\BoothackForum.StaticWebAssets.xml

@@ -26,8 +26,22 @@ using BoothackForum.Areas.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\facultate\BoothackForum\mainProject\BoothackForum\BoothackForum\Areas\Identity\Pages\_ViewImports.cshtml"
+using BoothackForum.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "E:\facultate\BoothackForum\mainProject\BoothackForum\BoothackForum\Areas\Identity\Pages\_ViewImports.cshtml"
+using BoothackForum.Data;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13b82ef97968a56a4de533f67cf3e21d662f41aa", @"/Areas/Identity/Pages/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"77ab33293dcc9df593d5c22f0afcfc406ef17487", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dac860d2cd4e62194bb032ec116413be65ee3804", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
